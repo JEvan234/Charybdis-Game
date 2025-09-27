@@ -29,9 +29,7 @@ PlayButton = pg.image.load(PlayPath).convert_alpha()
 SettingsPath = "assets/art/settingbutton-PLACEHOLDER-320x120.png"
 SettingsButton = pg.image.load(SettingsPath).convert_alpha()
 
-# Define Buttons Logically
-def testaction():
-    print("yep")
+# testaction lol - You misread that
 
 while running:
     #Get Mouse Position:
