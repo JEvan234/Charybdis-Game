@@ -12,6 +12,18 @@ def combat_loop(screen,clock):
     playerStartX = 300
     playerStartY = 300
 
+    ARROW_SCALE = 1.0
+    ARROW_SPEED = 10
+    ARROW_LIFETIME = 750 #this is in milliseconds!!!
+
+    PLAYER_SPEED = 8
+
+    GUN_OFFSET_X = 45
+    GUN_OFFSET_Y = 20
+
+    SHOOT_COOLDOWN = 10
+
+
     # Enemy list 1-3
     #maybe store enemys off screen
 
@@ -22,25 +34,28 @@ def combat_loop(screen,clock):
     PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"
     PlayerModel = pg.image.load(PlayerPath).convert_alpha()
 
-    # Class to create multiple arrows at a time
-    class Arrows:
-        def __init__(self, position):
-            self.position = position
+    ArrowPath = "./assets/art/arrow-PLACEHOLDER-cropped.png"
+    ArrowModel = pg.image.load(ArrowPath).convert_alpha()
 
     class Player(pg.sprite.Sprite):
         def __init__(self):
             super().__init__()
+            self.pos =  pg.Vector2(playerStartX, playerStartY)
+
             self.image = PlayerModel
             self.base_player_image = self.image
-
-            self.pos =  pg.Vector2(playerStartX, playerStartY)
-            self.speed = 8
 
             self.hitbox_rect = self.base_player_image.get_rect(center = self.pos)
             self.rect= self.hitbox_rect.copy()
 
-        
+            self.speed = PLAYER_SPEED
 
+            self.shoot = False
+            self.shoot_cooldown = 0
+
+            self.gun_barrel_offset = pg.math.Vector2(GUN_OFFSET_X, GUN_OFFSET_Y)
+
+        
         def player_rotation(self):
             self.mouse_coords = pg.mouse.get_pos()
             self.x_change_mouse_player = (self.mouse_coords[0] - self.hitbox_rect.centerx)
@@ -48,6 +63,7 @@ def combat_loop(screen,clock):
             self.angle = 90 + math.degrees(math.atan2(self.y_change_mouse_player, self.x_change_mouse_player))
             self.image = pg.transform.rotate(self.base_player_image, -self.angle)
             self.rect = self.image.get_rect(center = self.hitbox_rect.center)
+        
 
         def user_input(self):
             self.velocity_x = 0
@@ -68,6 +84,19 @@ def combat_loop(screen,clock):
                 self.velocity_x /= math.sqrt(2)
                 self.velocity_y /= math.sqrt(2)
 
+            if pg.mouse.get_pressed() == (1, 0, 0) or keys[pg.K_SPACE]:
+                self.shoot = True
+                self.is_shooting()
+            else:
+                self.shoot = False
+
+        def is_shooting(self): 
+            if self.shoot_cooldown == 0:
+                self.shoot_cooldown = SHOOT_COOLDOWN
+                spawn_arrow_pos = self.pos + self.gun_barrel_offset.rotate(self.angle)
+                self.bullet = Arrow(spawn_arrow_pos[0], spawn_arrow_pos[1], self.angle)
+                bullet_group.add(self.bullet)
+                all_sprites_group.add(self.bullet)
 
         def move(self):
             self.pos += pg.math.Vector2(self.velocity_x, self.velocity_y)
@@ -79,7 +108,45 @@ def combat_loop(screen,clock):
             self.move()
             self.player_rotation()
 
+            if self.shoot_cooldown > 0:
+                self.shoot_cooldown -= 1
+
+    # Class to create multiple arrows at a time
+    class Arrow:
+        def __init__(self, x, y, angle):
+            super().__init__()
+            self.image = ArrowModel
+            self.image = pg.transform.rotozoom(self.image, 0, ARROW_SCALE)
+            self.rect = self.image.get_rect()
+            self.rect.center = (x, y)
+            self.x = x
+            self.y = y
+            self.angle = angle
+            self.speed = ARROW_SPEED
+            self.x_vel = math.cos(self.angle * (2*math.pi/360)) * self.speed
+            self.y_vel = math.sin(self.angle * (2*math.pi/360)) * self.speed
+            self.arrow_lifetime = ARROW_LIFETIME
+            self.spawn_time = pg.time.get_ticks() # gets the specific time that the bullet was created
+
+        def arrow_movement(self):  
+            self.x += self.x_vel
+            self.y += self.y_vel
+
+            self.rect.x = int(self.x)
+            self.rect.y = int(self.y)
+
+            if pg.time.get_ticks() - self.spawn_time > self.arrow_lifetime:
+                self.kill() 
+
+        def update(self):
+            self.arrow_movement()
+
     player = Player()
+
+    all_sprites_group = pg.sprite.Group()
+    bullet_group = pg.sprite.Group()
+
+    all_sprites_group.add(player)
 
     # Main Combat Loop
     running = True
@@ -94,20 +161,23 @@ def combat_loop(screen,clock):
                     running = False
 
         screen.blit(OceanGraphic, (0,0))
-        screen.blit(player.image, player.rect)
-        player.update()
+        #screen.blit(player.image, player.rect)
+
+        all_sprites_group.draw(screen)
+        all_sprites_group.update()
 
         #debug imagery
-        pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
-        pg.draw.rect(screen, "yellow", player.rect, width=2)
+        #pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
+        #pg.draw.rect(screen, "yellow", player.rect, width=2)
 
 
         pg.display.flip()
+        clock.tick(60)
 
         # limits FPS to 60
         # dt is delta time in seconds since last frame, used for framerate-
         # independent physics.
-        dt = clock.tick(60) / 1000
+        # dt = clock.tick(60) / 1000
 
 if __name__ == "__main__":
     screen = pg.display.set_mode((1280, 960))
