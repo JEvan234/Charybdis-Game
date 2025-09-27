@@ -60,6 +60,7 @@ while running:
         elif SettingsButtonBox.check_click() == True:
             print("If you change all the settings, is it still the same game")
             #Debug
+            #currently commented out as it just forces the game to close
             #combat_loop(screen,clock)
 
 
