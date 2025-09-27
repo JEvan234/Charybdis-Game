@@ -1,3 +1,4 @@
+# Intro:
 narrator
 
 "Ship of Theseus, after all the original planks have been replaced, the ship is now made entirely of new materials. Is it still the original Ship of Theseus, or has it become a different ship"
@@ -59,3 +60,11 @@ Captain
 Sea god 
 
 Are you a different animal, and the same beast?"
+
+# Act 1:
+
+# Act 2:
+
+# Act 3:
+
+# Epilogue:
