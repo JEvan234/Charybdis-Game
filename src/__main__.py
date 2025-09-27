@@ -49,7 +49,7 @@ while running:
             if event.key == pg.K_ESCAPE:
                 running = False
         if PlayButtonBox.check_click() == True:
-            repair_loop()
+            repair_loop(screen,clock)
         # Check mouse clicks
 
 

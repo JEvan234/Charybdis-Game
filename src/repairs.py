@@ -3,18 +3,13 @@ import  pygame as pg
 from sys import exit
 
 # Define Screen size
-screen = pg.display.set_mode((1280, 960))
-clock = pg.time.Clock()
-running = True
-pg.display.set_caption("Charybdis")
-dt = 0
+
 
 # Enemy list 1-3
 #maybe store enemys off screen
 
+def repair_loop(screen,clock):
 
-
-def repair_loop():
     # General player logic
     class player:
         def __init__(self, x, y):

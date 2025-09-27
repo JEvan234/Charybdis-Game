@@ -1,5 +1,4 @@
 # Ui frameworks:
-
 import pygame as pg
 
 #Button class:
