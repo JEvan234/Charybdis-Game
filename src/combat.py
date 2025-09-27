@@ -112,7 +112,7 @@ def combat_loop(screen,clock):
                 self.shoot_cooldown -= 1
 
     # Class to create multiple arrows at a time
-    class Arrow:
+    class Arrow(pg.sprite.Sprite):
         def __init__(self, x, y, angle):
             super().__init__()
             self.image = ArrowModel
