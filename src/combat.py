@@ -37,8 +37,23 @@ class Player(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = PlayerModel
+        self.base_player_image = self.image
+
         self.pos =  pg.Vector2(playerStartX, playerStartY)
         self.speed = 8
+
+        self.hitbox_rect = self.base_player_image.get_rect(center = self.pos)
+        self.rect= self.hitbox_rect.copy()
+
+        
+
+    def player_rotation(self):
+        self.mouse_coords = pg.mouse.get_pos()
+        self.x_change_mouse_player = (self.mouse_coords[0] - self.hitbox_rect.centerx)
+        self.y_change_mouse_player = (self.mouse_coords[1] - self.hitbox_rect.centery)
+        self.angle = 90 + math.degrees(math.atan2(self.y_change_mouse_player, self.x_change_mouse_player))
+        self.image = pg.transform.rotate(self.base_player_image, -self.angle)
+        self.rect = self.image.get_rect(center = self.hitbox_rect.center)
 
     def user_input(self):
         self.velocity_x = 0
@@ -62,10 +77,13 @@ class Player(pg.sprite.Sprite):
 
     def move(self):
         self.pos += pg.math.Vector2(self.velocity_x, self.velocity_y)
+        self.hitbox_rect.center = self.pos
+        self.rect.center = self.hitbox_rect.center
 
     def update(self):
         self.user_input()
         self.move()
+        self.player_rotation()
 
 player = Player()
 
@@ -82,22 +100,10 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     #screen.fill("blue")
     screen.blit(OceanGraphic, (0,0))
-    screen.blit(player.image, player.pos)
+    screen.blit(player.image, player.rect)
     player.update()
 
-    #pg.draw.circle(screen, "red", player_pos, 40)
 
-    #keys = pg.key.get_pressed()
-    #if keys[pg.K_w]:
-    #    player_pos.y -= 300 * dt
-    #if keys[pg.K_s]:
-    #    player_pos.y += 300 * dt
-    #if keys[pg.K_a]:
-    #    player_pos.x -= 300 * dt
-    #if keys[pg.K_d]:
-    #    player_pos.x += 300 * dt
-
-    # flip() the display to put your work on screen
     pg.display.update()
     #pg.display.flip()
 
