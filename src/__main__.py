@@ -11,21 +11,21 @@ pg.display.set_caption("Charybdis - KSU Game Jam 2025")
 
 
 # Load assets
-BackgroundPath = "./assets/titlescreen-PLACEHOLDER-1280-960.png"
+BackgroundPath = "./assets/art/titlescreen-PLACEHOLDER-1280-960.png"
 Background = pg.image.load(BackgroundPath).convert_alpha()
 
-LogoPath = "./assets/LCKSULogo.png"
+LogoPath = "./assets/art/LCKSULogo.png"
 LCKSULogo = pg.image.load(LogoPath).convert_alpha()
 LCKSULogo = pg.transform.scale(LCKSULogo, (200,200))
 
-PyGameLogoPath = "./assets/pygame-ALT-320vert.png"
+PyGameLogoPath = "./assets/art/pygame-ALT-320vert.png"
 PygameLogo = pg.image.load(PyGameLogoPath).convert_alpha()
 PygameLogo = pg.transform.scale(PygameLogo, (150,150))
 
 # Button assets
-PlayPath = "./assets/playbutton-PLACEHOLDER-320x120.png"
+PlayPath = "./assets/art/playbutton-PLACEHOLDER-320x120.png"
 PlayButton = pg.image.load(PlayPath).convert_alpha()
-SettingsPath = "assets/settingbutton-PLACEHOLDER-320x120.png"
+SettingsPath = "assets/art/settingbutton-PLACEHOLDER-320x120.png"
 SettingsButton = pg.image.load(SettingsPath).convert_alpha()
 
 

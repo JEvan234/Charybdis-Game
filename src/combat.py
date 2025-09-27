@@ -17,7 +17,7 @@ player_pos.y = 800
 #maybe store enemys off screen
 
 # Load assets
-OceanPath = "./assets/ocean-bg-PLACEHOLDER-1280x960.png"
+OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
 OceanGraphic = pg.image.load(OceanPath).convert_alpha()
 #OceanGraphic = pg.transform.scale(OceanGraphic, (500,500))
 
