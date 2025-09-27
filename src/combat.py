@@ -1,6 +1,8 @@
 # Combat script
 import  pygame as pg
 from sys import exit
+import time
+import math
 
 # Define Screen size
 pg.init()
@@ -8,10 +10,13 @@ screen = pg.display.set_mode((1280, 960))
 clock = pg.time.Clock()
 running = True
 pg.display.set_caption("Charybdis")
-dt = 0
+#dt = 0
 
-player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-player_pos.y = 800
+#player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+#player_pos.y = 800
+
+playerStartX = 300
+playerStartY = 300
 
 # Enemy list 1-3
 #maybe store enemys off screen
@@ -19,12 +24,50 @@ player_pos.y = 800
 # Load assets
 OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
 OceanGraphic = pg.image.load(OceanPath).convert_alpha()
-#OceanGraphic = pg.transform.scale(OceanGraphic, (500,500))
+
+PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"
+PlayerModel = pg.image.load(PlayerPath).convert_alpha()
 
 # Class to create multiple arrows at a time
 class Arrows:
     def __init__(self, position):
         self.position = position
+
+class Player(pg.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = PlayerModel
+        self.pos =  pg.Vector2(playerStartX, playerStartY)
+        self.speed = 8
+
+    def user_input(self):
+        self.velocity_x = 0
+        self.velocity_y = 0
+
+        keys = pg.key.get_pressed()
+
+        if keys[pg.K_w]:
+            self.velocity_y = -self.speed
+        if keys[pg.K_a]:
+            self.velocity_x = -self.speed
+        if keys[pg.K_s]:
+            self.velocity_y = self.speed
+        if keys[pg.K_d]:
+            self.velocity_x = self.speed
+
+        if self.velocity_x != 0 and self.velocity_y != 0:
+            self.velocity_x /= math.sqrt(2)
+            self.velocity_y /= math.sqrt(2)
+
+
+    def move(self):
+        self.pos += pg.math.Vector2(self.velocity_x, self.velocity_y)
+
+    def update(self):
+        self.user_input()
+        self.move()
+
+player = Player()
 
 while running:
     # poll for events
@@ -39,21 +82,24 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     #screen.fill("blue")
     screen.blit(OceanGraphic, (0,0))
+    screen.blit(player.image, player.pos)
+    player.update()
 
-    pg.draw.circle(screen, "red", player_pos, 40)
+    #pg.draw.circle(screen, "red", player_pos, 40)
 
-    keys = pg.key.get_pressed()
-    if keys[pg.K_w]:
-        player_pos.y -= 300 * dt
-    if keys[pg.K_s]:
-        player_pos.y += 300 * dt
-    if keys[pg.K_a]:
-        player_pos.x -= 300 * dt
-    if keys[pg.K_d]:
-        player_pos.x += 300 * dt
+    #keys = pg.key.get_pressed()
+    #if keys[pg.K_w]:
+    #    player_pos.y -= 300 * dt
+    #if keys[pg.K_s]:
+    #    player_pos.y += 300 * dt
+    #if keys[pg.K_a]:
+    #    player_pos.x -= 300 * dt
+    #if keys[pg.K_d]:
+    #    player_pos.x += 300 * dt
 
     # flip() the display to put your work on screen
-    pg.display.flip()
+    pg.display.update()
+    #pg.display.flip()
 
     # limits FPS to 60
     # dt is delta time in seconds since last frame, used for framerate-
