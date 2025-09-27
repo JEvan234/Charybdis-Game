@@ -97,11 +97,13 @@ while running:
             if event.key == pg.K_ESCAPE:
                 running = False
 
-    # fill the screen with a color to wipe away anything from last frame
-    #screen.fill("blue")
     screen.blit(OceanGraphic, (0,0))
     screen.blit(player.image, player.rect)
     player.update()
+
+    #debug imagery
+    pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
+    pg.draw.rect(screen, "yellow", player.rect, width=2)
 
 
     pg.display.update()
