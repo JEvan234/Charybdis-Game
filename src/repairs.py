@@ -1,22 +1,72 @@
 # Repair script
 import  pygame as pg
 from sys import exit
+import math
 
 # Define Repair loop for importing into main
 def repair_loop(screen,clock):
+    # Define Player Start positions
+    playerStartX = 300
+    playerStartY = 300
+
+    # Player Model
+    PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"
+    PlayerModel = pg.image.load(PlayerPath).convert_alpha()
 
     # General player logic
-    class player:
-        def __init__(self, x, y):
-            self.rect = pg.Rect(x, y, 80, 60)
-            self.x = x
-            self.y = y
+    class Player(pg.sprite.Sprite):
+        def __init__(self):
+            super().__init__()
+            self.image = PlayerModel
+            self.base_player_image = self.image
+
+            self.pos =  pg.Vector2(playerStartX, playerStartY)
+            self.speed = 8
+
+            self.hitbox_rect = self.base_player_image.get_rect(center = self.pos)
+            self.rect= self.hitbox_rect.copy()
+
         
-        def blit(self):
-            screen.blit(PlayerModel, (self.x,self.y))
-    # Define initial player position
-    player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-    player_pos.y = 800
+
+        def player_rotation(self):
+            self.mouse_coords = pg.mouse.get_pos()
+            self.x_change_mouse_player = (self.mouse_coords[0] - self.hitbox_rect.centerx)
+            self.y_change_mouse_player = (self.mouse_coords[1] - self.hitbox_rect.centery)
+            self.angle = 90 + math.degrees(math.atan2(self.y_change_mouse_player, self.x_change_mouse_player))
+            self.image = pg.transform.rotate(self.base_player_image, -self.angle)
+            self.rect = self.image.get_rect(center = self.hitbox_rect.center)
+
+        def user_input(self):
+            self.velocity_x = 0
+            self.velocity_y = 0
+
+            keys = pg.key.get_pressed()
+
+            if keys[pg.K_w]:
+                self.velocity_y = -self.speed
+            if keys[pg.K_a]:
+                self.velocity_x = -self.speed
+            if keys[pg.K_s]:
+                self.velocity_y = self.speed
+            if keys[pg.K_d]:
+                self.velocity_x = self.speed
+
+            if self.velocity_x != 0 and self.velocity_y != 0:
+                self.velocity_x /= math.sqrt(2)
+                self.velocity_y /= math.sqrt(2)
+
+
+        def move(self):
+            self.pos += pg.math.Vector2(self.velocity_x, self.velocity_y)
+            self.hitbox_rect.center = self.pos
+            self.rect.center = self.hitbox_rect.center
+
+        def update(self):
+            self.user_input()
+            self.move()
+            self.player_rotation()
+
+    player = Player()
 
     # Load assets
     OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
@@ -45,21 +95,8 @@ def repair_loop(screen,clock):
         screen.blit(OceanGraphic, (0,0))
         screen.blit(Ship, (0,0))
 
-        # Get/update player movement
-        keys = pg.key.get_pressed()
-        if keys[pg.K_w]:
-            player_pos.y -= 300 * dt
-        if keys[pg.K_s]:
-            player_pos.y += 300 * dt
-        if keys[pg.K_a]:
-            player_pos.x -= 300 * dt
-        if keys[pg.K_d]:
-            player_pos.x += 300 * dt
-
-        # Reflect changes in player movement
-        Player1 = player(player_pos.x, player_pos.y)
-        Player1.blit()
-
+        screen.blit(player.image, player.rect)
+        player.update()
         # flip() the display to put your work on screen
         pg.display.flip()
 

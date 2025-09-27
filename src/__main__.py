@@ -1,7 +1,6 @@
 # Main script
 import  pygame as pg
 import UI
-import time
 from repairs import repair_loop
 
 # Define Screen size
