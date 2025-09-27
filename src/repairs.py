@@ -72,3 +72,6 @@ def repair_loop(screen,clock):
         # dt is delta time in seconds since last frame, used for framerate-
         # independent physics.
         dt = clock.tick(60) / 1000
+
+if __name__ == "__main__":
+    repair_loop(screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())
