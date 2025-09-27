@@ -3,6 +3,7 @@ import  pygame as pg
 import UI
 from repairs import repair_loop
 from combat import combat_loop
+import dialogue
 
 # Define Screen size
 pg.init()
