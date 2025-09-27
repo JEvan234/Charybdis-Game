@@ -21,6 +21,11 @@ OceanPath = "./assets/ocean-bg-PLACEHOLDER-1280x960.png"
 OceanGraphic = pg.image.load(OceanPath).convert_alpha()
 #OceanGraphic = pg.transform.scale(OceanGraphic, (500,500))
 
+# Class to create multiple arrows at a time
+class Arrows:
+    def __init__(self, position):
+        self.position = position
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
