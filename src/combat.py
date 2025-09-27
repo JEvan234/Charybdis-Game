@@ -94,7 +94,7 @@ def combat_loop(screen,clock):
             if self.shoot_cooldown == 0:
                 self.shoot_cooldown = SHOOT_COOLDOWN
                 spawn_arrow_pos = self.pos + self.gun_barrel_offset.rotate(self.angle)
-                self.bullet = Arrow(spawn_arrow_pos[0], spawn_arrow_pos[1], self.angle)
+                self.bullet = Arrow(spawn_arrow_pos[0], spawn_arrow_pos[1], self.angle + 270)
                 bullet_group.add(self.bullet)
                 all_sprites_group.add(self.bullet)
 
@@ -117,6 +117,8 @@ def combat_loop(screen,clock):
             super().__init__()
             self.image = ArrowModel
             self.image = pg.transform.rotozoom(self.image, 0, ARROW_SCALE)
+            self.base_arrow_image = self.image
+
             self.rect = self.image.get_rect()
             self.rect.center = (x, y)
             self.x = x
@@ -127,6 +129,8 @@ def combat_loop(screen,clock):
             self.y_vel = math.sin(self.angle * (2*math.pi/360)) * self.speed
             self.arrow_lifetime = ARROW_LIFETIME
             self.spawn_time = pg.time.get_ticks() # gets the specific time that the bullet was created
+
+            self.image = pg.transform.rotate(self.base_arrow_image, -(self.angle + 90))
 
         def arrow_movement(self):  
             self.x += self.x_vel
