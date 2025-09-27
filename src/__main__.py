@@ -10,6 +10,8 @@ clock = pg.time.Clock()
 running = True
 pg.display.set_caption("Charybdis - KSU Game Jam 2025")
 
+# Define UNIVERSAL integers
+BoatHealth = 20
 
 # Load assets
 BackgroundPath = "./assets/art/titlescreen-PLACEHOLDER-1280-960.png"
