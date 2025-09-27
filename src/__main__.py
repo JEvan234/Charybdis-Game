@@ -40,6 +40,7 @@ while running:
 
     #define buttons logically:
     PlayButtonBox = UI.Button(480,420,320,120,True)
+    SettingsButtonBox = UI.Button(480,620, 320, 120, True)
 
     # Check Quit Condition
     for event in pg.event.get():
@@ -50,7 +51,8 @@ while running:
                 running = False
         if PlayButtonBox.check_click() == True:
             repair_loop(screen,clock)
-        # Check mouse clicks
+        elif SettingsButtonBox.check_click() == True:
+            print("If you change all the settings, is it still the same game")
 
 
     # Load Assets
@@ -60,8 +62,7 @@ while running:
 
     #Load Button assets
     screen.blit(PlayButton, (480,420)) #(480, 420)
-    screen.blit(SettingsButton, (480,620)) #480, 220)
-    # Load play button hit-boxes
+    screen.blit(SettingsButton, (480,620)) #480, 620)
     
 
     pg.display.flip()

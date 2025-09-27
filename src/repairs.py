@@ -2,12 +2,7 @@
 import  pygame as pg
 from sys import exit
 
-# Define Screen size
-
-
-# Enemy list 1-3
-#maybe store enemys off screen
-
+# Define Repair loop for importing into main
 def repair_loop(screen,clock):
 
     # General player logic
