@@ -112,4 +112,5 @@ def combat_loop(screen,clock):
 if __name__ == "__main__":
     screen = pg.display.set_mode((1280, 960))
     clock = pg.time.Clock()
+    mixer.init()
     combat_loop(screen, clock)

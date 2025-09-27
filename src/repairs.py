@@ -108,4 +108,5 @@ def repair_loop(screen,clock):
         dt = clock.tick(60) / 1000
 
 if __name__ == "__main__":
+    mixer.init()
     repair_loop(screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())
