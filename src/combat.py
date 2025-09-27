@@ -12,6 +12,11 @@ dt = 0
 
 player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
+# Load assets
+OceanPath = "./assets/ocean-bg-PLACEHOLDER-1280x960.png"
+OceanGraphic = pg.image.load(OceanPath).convert_alpha()
+#OceanGraphic = pg.transform.scale(OceanGraphic, (500,500))
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -20,7 +25,8 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("blue")
+    #screen.fill("blue")
+    screen.blit(OceanGraphic, (0,0))
 
     pg.draw.circle(screen, "red", player_pos, 40)
 
