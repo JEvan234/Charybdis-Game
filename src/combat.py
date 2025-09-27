@@ -1,7 +1,6 @@
 # Combat script
 import  pygame as pg
 import time
-import sys
 
 # Define Screen size
 pg.init()
