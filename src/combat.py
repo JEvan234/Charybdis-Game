@@ -32,6 +32,9 @@ while running:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
+        elif event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
+                running = False
 
     # fill the screen with a color to wipe away anything from last frame
     #screen.fill("blue")
