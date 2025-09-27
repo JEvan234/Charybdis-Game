@@ -72,7 +72,7 @@ def repair_loop(screen,clock):
     OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
     OceanGraphic = pg.image.load(OceanPath).convert_alpha()
     #OceanGraphic = pg.transform.scale(OceanGraphic, (500,500))
-    ShipPath = "./assets/art/ship-PLACEHOLDER-320horiz.png"
+    ShipPath = "./assets/art/ship-PLACEHOLDER-1280horiz.png" # 420 tall
     Ship = pg.image.load(ShipPath).convert_alpha()
 
     # Load Player Assets
@@ -93,7 +93,7 @@ def repair_loop(screen,clock):
 
         # fill the screen with a color to wipe away anything from last frame
         screen.blit(OceanGraphic, (0,0))
-        screen.blit(Ship, (0,0))
+        screen.blit(Ship, (0,260))
 
         screen.blit(player.image, player.rect)
         player.update()

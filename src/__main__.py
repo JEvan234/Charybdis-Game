@@ -2,6 +2,7 @@
 import  pygame as pg
 import UI
 from repairs import repair_loop
+from combat import combat_loop
 
 # Define Screen size
 pg.init()
@@ -52,6 +53,8 @@ while running:
             repair_loop(screen,clock)
         elif SettingsButtonBox.check_click() == True:
             print("If you change all the settings, is it still the same game")
+            #Debug
+            combat_loop(screen,clock)
 
 
     # Load Assets
