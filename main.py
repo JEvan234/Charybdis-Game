@@ -5,9 +5,11 @@ import sys
 
 # Define Screen size
 pg.init()
-screen = pg.display.set_mode((1260, 940))
+screen = pg.display.set_mode((1280, 960))
 clock = pg.time.Clock()
 running = True
+pg.display.set_caption("Charybdis")
+
 
 while running:
     for event in pg.event.get():
