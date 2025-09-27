@@ -1,6 +1,6 @@
 # Main script
 import  pygame as pg
-
+import UI
 
 # Define Screen size
 pg.init()
@@ -28,10 +28,13 @@ PlayButton = pg.image.load(PlayPath).convert_alpha()
 SettingsPath = "assets/art/settingbutton-PLACEHOLDER-320x120.png"
 SettingsButton = pg.image.load(SettingsPath).convert_alpha()
 
+# Define Buttons Logically
+testaction = print("yep")
+PlayButtonBox = UI.Button(480,420,320,120,action = testaction)
 
 while running:
     #Get Mouse Position:
-    mouse_x, mouse_y = pg.mouse.get_pos()
+    mousePosition = pg.mouse.get_pos()
 
     # Check Quit Condition
     for event in pg.event.get():
@@ -40,6 +43,7 @@ while running:
         elif event.type == pg.KEYDOWN:
             if event.key == pg.K_ESCAPE:
                 running = False
+        PlayButtonBox.handle_event(event)
         # Check mouse clicks
 
 
@@ -51,7 +55,8 @@ while running:
     #Load Button assets
     screen.blit(PlayButton, (480,420)) #(480, 420)
     screen.blit(SettingsButton, (480,620)) #480, 220)
-
+    # Load play button hit-boxes
+    
 
     pg.display.flip()
     clock.tick(60)
