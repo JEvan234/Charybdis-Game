@@ -1,6 +1,7 @@
 # Main script
 import  pygame as pg
 import time
+import sys
 
 # Define Screen size
 pg.init()
@@ -31,6 +32,9 @@ while running:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
+        elif event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
+                running = False
 
     # Load Assets
     screen.blit(Background, (0,0))
