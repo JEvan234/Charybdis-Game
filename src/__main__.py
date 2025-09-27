@@ -2,6 +2,7 @@
 import  pygame as pg
 import time
 import sys
+import combat
 
 # Define Screen size
 pg.init()
@@ -19,9 +20,15 @@ LogoPath = "./assets/LCKSULogo.png"
 LCKSULogo = pg.image.load(LogoPath).convert_alpha()
 LCKSULogo = pg.transform.scale(LCKSULogo, (200,200))
 
-PyGameLogoPath = "./assets/pygame_logo.png"
+PyGameLogoPath = "./assets/pygame-ALT-320vert.png"
 PygameLogo = pg.image.load(PyGameLogoPath).convert_alpha()
-PygameLogo = pg.transform.scale(PygameLogo, (200,100))
+PygameLogo = pg.transform.scale(PygameLogo, (150,150))
+
+# Button assets
+PlayPath = "./assets/playbutton-PLACEHOLDER-320x120.png"
+PlayButton = pg.image.load(PlayPath).convert_alpha()
+SettingsPath = "assets/settingbutton-PLACEHOLDER-320x120.png"
+SettingsButton = pg.image.load(SettingsPath).convert_alpha()
 
 
 while running:
@@ -35,18 +42,17 @@ while running:
         elif event.type == pg.KEYDOWN:
             if event.key == pg.K_ESCAPE:
                 running = False
+        # Check mouse clicks
+
 
     # Load Assets
     screen.blit(Background, (0,0))
-    screen.blit(LCKSULogo, (20,720))
-    screen.blit(PygameLogo, (240,800))
+    screen.blit(LCKSULogo, (20,750))
+    screen.blit(PygameLogo, (240,760))
 
     #Load Button assets
-    #(480, 420)
-    #480, 220)
-
-    # Check Mouse over buttons
-    
+    screen.blit(PlayButton, (480,420)) #(480, 420)
+    screen.blit(SettingsButton, (480,620)) #480, 220)
 
 
     pg.display.flip()
