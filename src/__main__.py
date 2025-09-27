@@ -2,6 +2,7 @@
 import  pygame as pg
 import UI
 import time
+from repairs import repair_loop
 
 # Define Screen size
 pg.init()
@@ -48,8 +49,7 @@ while running:
             if event.key == pg.K_ESCAPE:
                 running = False
         if PlayButtonBox.check_click() == True:
-            print("yep")
-            time.sleep(0.1)
+            repair_loop()
         # Check mouse clicks
 
 
