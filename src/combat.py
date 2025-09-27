@@ -11,6 +11,10 @@ pg.display.set_caption("Charybdis")
 dt = 0
 
 player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+player_pos.y = 800
+
+# Enemy list 1-3
+#maybe store enemys off screen
 
 # Load assets
 OceanPath = "./assets/ocean-bg-PLACEHOLDER-1280x960.png"
