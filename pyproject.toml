@@ -1,0 +1,13 @@
+[project]
+name = "charybdis-game"
+version = "0.1.0"
+description = "KSU GameJam Fall 2025"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "pygame>=2.5.2",
+]
+
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = []
