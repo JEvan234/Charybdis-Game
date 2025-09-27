@@ -1,5 +1,6 @@
 # Main script
 import  pygame as pg
+from pygame import mixer
 import UI
 from repairs import repair_loop
 from combat import combat_loop
@@ -12,6 +13,10 @@ clock = pg.time.Clock()
 running = True
 pg.display.set_caption("Charybdis - KSU Game Jam 2025")
 
+# Music Loading
+mixer.init()
+mixer.music.load("./assets/music/Menu.wav")
+mixer.music.play(loops=-1)
 # Define UNIVERSAL integers
 BoatHealth = 20
 

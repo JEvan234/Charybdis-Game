@@ -1,10 +1,12 @@
 # Repair script
 import  pygame as pg
+from pygame import mixer
 from sys import exit
 import math
 
 # Define Repair loop for importing into main
 def repair_loop(screen,clock):
+    mixer.music.pause()
     # Define Player Start positions
     playerStartX = 300
     playerStartY = 300

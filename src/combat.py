@@ -1,5 +1,6 @@
 # Combat script
 import  pygame as pg
+from pygame import mixer
 from sys import exit
 import time
 import math
@@ -7,6 +8,7 @@ import math
 #player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 #player_pos.y = 800
 def combat_loop(screen,clock):
+    mixer.music.pause()
     playerStartX = 300
     playerStartY = 300
 
