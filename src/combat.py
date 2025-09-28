@@ -29,8 +29,19 @@ def combat_loop(screen,clock,level):
     #maybe store enemys off screen
 
     # Load assets
+    ProgressPath1 = "./assets/art/progressbar-1PROGRESS-640x60.png"
+    ProgressPath2 = "./assets/art/progressbar-2PROGRESS-640x60.png"
+    ProgressPath3 = "./assets/art/progressbar-3PROGRESS-640x60.png"
+    ProgressPath4 = "./assets/art/progressbar-4PROGRESS-640x60.png"
+
+    ProgressGraphic1 = pg.image.load(ProgressPath1).convert_alpha()
+    ProgressGraphic2 = pg.image.load(ProgressPath2).convert_alpha()
+    ProgressGraphic3 = pg.image.load(ProgressPath3).convert_alpha()
+    ProgressGraphic4 = pg.image.load(ProgressPath4).convert_alpha()
+
     OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
     OceanGraphic = pg.image.load(OceanPath).convert_alpha()
+
     ShipPath = "./assets/art/ship-PLACEHOLDER-1280horiz.png"
     Ship = pg.image.load(ShipPath).convert_alpha()
 
@@ -39,6 +50,10 @@ def combat_loop(screen,clock,level):
 
     ArrowPath = "./assets/art/arrow-PLACEHOLDER-cropped.png"
     ArrowModel = pg.image.load(ArrowPath).convert_alpha()
+
+    EnemyPath = "./assets/art/enemy-STANDING-110x60.png"
+    EnemyModel = pg.image.load(EnemyPath).convert_alpha()
+
 
     class Player(pg.sprite.Sprite):
         def __init__(self):
@@ -188,18 +203,26 @@ def combat_loop(screen,clock,level):
         all_sprites_group.update()
 
         #debug imagery
-        pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
-        pg.draw.rect(screen, "yellow", player.rect, width=2)
+        #pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
+        #pg.draw.rect(screen, "yellow", player.rect, width=2)
 
         if level == 1:
+            screen.blit(ProgressGraphic1, (0,0))
             dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
         elif level == 2:
+            screen.blit(ProgressGraphic2, (0,0))
             dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
+        elif level == 3:
+            screen.blit(ProgressGraphic3, (0,0))
+            dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
+        elif level == 4:
+            screen.blit(ProgressGraphic4, (0,0))
+            dialogue.TextPopup("This is level 4", (650,600), 1000).draw(screen)
         
 
         #poorly made debug to see hitboxes of arrow sprites, need to rework (or redesign stuff)
-        for sprite in all_sprites_group:
-            pg.draw.rect(screen, "blue", sprite.rect, 2)
+        #for sprite in all_sprites_group:
+           # pg.draw.rect(screen, "blue", sprite.rect, 2)
 
 
         pg.display.flip()
@@ -213,6 +236,6 @@ def combat_loop(screen,clock,level):
 if __name__ == "__main__":
     screen = pg.display.set_mode((1280, 960))
     clock = pg.time.Clock()
-    level = 1
+    level = 2
     mixer.init()
     combat_loop(screen, clock, level)
