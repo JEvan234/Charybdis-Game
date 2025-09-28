@@ -21,7 +21,7 @@ def combat_loop(screen,clock):
     GUN_OFFSET_X = 45
     GUN_OFFSET_Y = 20
 
-    SHOOT_COOLDOWN = 10
+    SHOOT_COOLDOWN = 20
 
 
     # Enemy list 1-3
