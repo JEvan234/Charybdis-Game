@@ -169,11 +169,43 @@ def repair_loop(screen,clock, level):
                     message4.draw(screen)
                     message5.draw(screen)
                 pg.display.flip()
-                sleep(7)
+                sleep(10)
         elif level == 2:
             screen.blit(ProgressGraphic3, (0,0))
+            if matUI.check_click() == True:
+                screen.blit(textBackground, (0,0))
+                script = True
+                message1 = dialogue.TextPopup("You once again plea with the god, begging for release.", (650,350), 1000)
+                message2 = dialogue.TextPopup("You argue that the ship itsself has seen many new battles,", (650,400), 1000)
+                message3 = dialogue.TextPopup("and thus is no longer the same ship.", (650,450), 1000)
+                message4 = dialogue.TextPopup("The sea god ignores the captain's crys, and insists", (650,500), 1000)
+                message5 = dialogue.TextPopup("that the ship is still the same.", (650,550), 1000)
+                if script == True:
+                    message1.draw(screen)
+                    message2.draw(screen)
+                    message3.draw(screen)
+                    message4.draw(screen)
+                    message5.draw(screen)
+                pg.display.flip()
+                sleep(10)
         elif level == 3:
             screen.blit(ProgressGraphic4, (0,0))
+            if matUI.check_click() == True:
+                screen.blit(textBackground, (0,0))
+                script = True
+                message1 = dialogue.TextPopup("You beg for release one final time, arguing that", (650,350), 1000)
+                message2 = dialogue.TextPopup("You are no longer the same, the seas have changed you, and as the", (650,400), 1000)
+                message3 = dialogue.TextPopup("captain, this change extends to the ship", (650,450), 1000)
+                message4 = dialogue.TextPopup("The sea god reminds you that the ship still stands,", (650,500), 1000)
+                message5 = dialogue.TextPopup("and ignores any furthur pleas.", (650,550), 1000)
+                if script == True:
+                    message1.draw(screen)
+                    message2.draw(screen)
+                    message3.draw(screen)
+                    message4.draw(screen)
+                    message5.draw(screen)
+                pg.display.flip()
+                sleep(10)
         elif level == 4:
             pass
 
@@ -189,4 +221,4 @@ def repair_loop(screen,clock, level):
 
 if __name__ == "__main__":
     mixer.init()
-    repair_loop(level=1,screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())
+    repair_loop(level=3,screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())
