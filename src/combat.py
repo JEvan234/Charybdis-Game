@@ -63,7 +63,7 @@ def combat_loop(screen,clock):
             self.mouse_coords = pg.mouse.get_pos()
             self.x_change_mouse_player = (self.mouse_coords[0] - self.hitbox_rect.centerx)
             self.y_change_mouse_player = (self.mouse_coords[1] - self.hitbox_rect.centery)
-            self.angle = 90 + math.degrees(math.atan2(self.y_change_mouse_player, self.x_change_mouse_player))
+            self.angle = math.degrees(math.atan2(self.y_change_mouse_player, self.x_change_mouse_player))
             self.image = pg.transform.rotate(self.base_player_image, -self.angle)
             self.rect = self.image.get_rect(center = self.hitbox_rect.center)
         
@@ -98,7 +98,7 @@ def combat_loop(screen,clock):
             if self.shoot_cooldown == 0:
                 self.shoot_cooldown = SHOOT_COOLDOWN
                 spawn_arrow_pos = self.pos + self.gun_barrel_offset.rotate(self.angle)
-                self.bullet = Arrow(spawn_arrow_pos[0], spawn_arrow_pos[1], self.angle + 270)
+                self.bullet = Arrow(spawn_arrow_pos[0], spawn_arrow_pos[1], self.angle)
                 bullet_group.add(self.bullet)
                 all_sprites_group.add(self.bullet)
 
