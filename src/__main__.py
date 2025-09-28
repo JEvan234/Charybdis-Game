@@ -99,23 +99,22 @@ while running:
             transitions.fadeout(screen)
             combat_loop(screen,clock, 4)
             transitions.fadeout(screen)
-            screen.blit(textBackground,(0,0))
+            screen.blit(textBackground)
             # Intro script goes here
             script = True
             message1 = dialogue.TextPopup("After all the trials of the sea, you were unable to ", (650,350), 1000)
             message2 = dialogue.TextPopup("complete your journey. The monster Charybdis has swallowed the", (650,400), 1000)
             message3 = dialogue.TextPopup("ship whole, leaving nothing to remain. However, this has also freed", (650,450), 1000)
-            message4 = dialogue.TextPopup(" ", (650,500), 1000)
+            message4 = dialogue.TextPopup("you of your curse, as the only way to sail again is with a new vessel.", (650,500), 1000)
             if script == True:
                 message1.draw(screen)
                 message2.draw(screen)
                 message3.draw(screen)
                 message4.draw(screen)
-                message5.draw(screen)
             pg.display.flip()
             sleep(15)
             screen.fill("black")
-            screen.blit(textBackground, (0,0))
+            screen.blit(textBackground)
             # Credits
             message1 = dialogue.TextPopup("Programming: Mert Acar, Jacob Evans, Cliff Russell", (650,350), 1000)
             message2 = dialogue.TextPopup("Script: Raam Patel", (650,400), 1000)
@@ -130,6 +129,8 @@ while running:
                 message5.draw(screen)
             pg.display.flip()
             sleep(15)
+            mixer.music.load("./assets/music/Menu.wav")
+            mixer.music.play(loops=-1)
         elif SettingsButtonBox.check_click() == True:
             joke = True
             #Debug

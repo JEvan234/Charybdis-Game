@@ -154,6 +154,8 @@ def repair_loop(screen,clock, level):
 
         if level == 1:
             screen.blit(ProgressGraphic2, (0,0))
+            warning = dialogue.TextPopup("Please interact with the Mat and Crate First", (600,200), 1000)
+            warning.draw(screen)
             if matUI.check_click() == True:
                 screen.blit(textBackground, (0,0))
                 script = True
@@ -221,4 +223,4 @@ def repair_loop(screen,clock, level):
 
 if __name__ == "__main__":
     mixer.init()
-    repair_loop(level=3,screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())
+    repair_loop(level=1,screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())
