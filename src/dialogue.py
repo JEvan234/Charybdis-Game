@@ -1,6 +1,20 @@
 # Dialogue Funtions:
 import pygame as pg
 
+FontPath = "./assets/fonts/Constantine.ttf"
+FontSize = 24
+Constantine = pg.font.Font(FontPath, FontSize)
+# init
+pg.init()
+pg.font.init()
+
+'''
+text color = #321902
+text color = (50, 25, 2)
+
+'''
+
+
 class TextPopup:
     def __init__(self, text, font, color, position, duration_ms):
         self.text = text
