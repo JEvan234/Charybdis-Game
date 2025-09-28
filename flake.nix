@@ -11,21 +11,9 @@
       let
         pkgs = import nixpkgs { inherit system; };
 
-        python = pkgs.python313;
-
-        pygame-sys-deps = with pkgs; [
-          SDL2
-          (SDL2_image.overrideAttrs (oldAttrs: {
-            buildInputs = oldAttrs.buildInputs ++ [ libpng libjpeg libwebp ];
-          }))          
-	  SDL2_mixer
-          SDL2_ttf
-          SDL2_gfx
-          pkg-config
-          xorg.libX11
-          xorg.libXext
-          xorg.libXrandr
-        ];
+        pythonWithPygame = pkgs.python313.withPackages (ps: [
+          ps.pygame
+        ]);
 
       in
       {
@@ -33,10 +21,16 @@
           name = "pygame-pdm-env";
 
           packages = [
-            python
+            pythonWithPygame
             pkgs.pdm
             pkgs.uv
-          ] ++ pygame-sys-deps;
+
+            pkgs.SDL2
+            pkgs.SDL2_image
+            pkgs.SDL2_mixer
+            pkgs.SDL2_ttf
+            pkgs.SDL2_gfx
+          ];
 
           shellHook = ''
             export PDM_VENV_IN_PROJECT=1
@@ -48,5 +42,3 @@
       }
     );
 }
-
-

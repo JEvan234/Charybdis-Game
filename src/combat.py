@@ -93,7 +93,7 @@ def combat_loop(screen,clock,level):
             self.velocity_y = 0
 
             keys = pg.key.get_pressed()
-            '''
+            
             if keys[pg.K_w]:
                 self.velocity_y = -self.speed
             if keys[pg.K_a]:
@@ -106,7 +106,7 @@ def combat_loop(screen,clock,level):
             if self.velocity_x != 0 and self.velocity_y != 0:
                 self.velocity_x /= math.sqrt(2)
                 self.velocity_y /= math.sqrt(2)
-            '''
+            
             if pg.mouse.get_pressed() == (1, 0, 0) or keys[pg.K_SPACE]:
                 self.shoot = True
                 self.is_shooting()
@@ -192,8 +192,27 @@ def combat_loop(screen,clock,level):
 
     all_sprites_group.add(player)
 
+    # Function to spawn enemies based on the current level
+    def spawn_enemies(level):
+        if level == 1:
+            Enemy1 = Enemy((300, 300))
+        elif level == 2:
+            Enemy1 = Enemy((300, 300))
+            Enemy2 = Enemy((600, 300))
+        elif level == 3:
+            Enemy1 = Enemy((300, 300))
+            Enemy2 = Enemy((600, 300))
+            Enemy3 = Enemy((900, 300))
+
+    # Function to handle collisions between bullets and enemies
+    def handle_collisions():
+        # Check for collisions between bullets and enemies
+        collisions = pg.sprite.groupcollide(bullet_group, enemy_group, True, True)
+
+
     # Main Combat Loop
     running = True
+    spawn_enemies(level) # Spawn enemies at the start of the loop
     while running:
         # poll for events
         # pygame.QUIT event means the user clicked X to close your window
@@ -209,7 +228,7 @@ def combat_loop(screen,clock,level):
         #screen.blit(player.image, player.rect)
 
         
-
+        
         #debug imagery
         #pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
         #pg.draw.rect(screen, "yellow", player.rect, width=2)
@@ -218,20 +237,14 @@ def combat_loop(screen,clock,level):
             screen.blit(ProgressGraphic1, (0,0))
             screen.blit(Ship, (0,100))
             dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
-            Enemy1 = Enemy((300,300))
         elif level == 2:
             screen.blit(ProgressGraphic2, (0,0))
             screen.blit(Ship, (0,100))
             dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
-            Enemy1 = Enemy((300,300))
-            Enemy2 = Enemy((600,300))
         elif level == 3:
             screen.blit(ProgressGraphic3, (0,0))
             screen.blit(Ship, (0,100))
             dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
-            Enemy1 = Enemy((300,300))
-            Enemy2 = Enemy((600,300))
-            Enemy3 = Enemy((900,300))
         elif level == 4:
             screen.blit(ProgressGraphic4, (0,0))
             dialogue.TextPopup("This is level 4", (650,600), 1000).draw(screen)
@@ -240,6 +253,12 @@ def combat_loop(screen,clock,level):
         all_sprites_group.draw(screen)
         all_sprites_group.update()
         
+        # Call the collision handling function
+        handle_collisions()
+
+        # Check if all enemies are defeated to end the level
+        if not enemy_group:
+            running = False # End the loop if no enemies are left
 
         #poorly made debug to see hitboxes of arrow sprites, need to rework (or redesign stuff)
         #for sprite in all_sprites_group:
