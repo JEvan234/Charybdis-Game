@@ -5,6 +5,7 @@ from sys import exit
 import time
 import math
 import dialogue
+import transitions
 
 #player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 #player_pos.y = 800
@@ -41,6 +42,8 @@ def combat_loop(screen,clock,level):
 
     OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
     OceanGraphic = pg.image.load(OceanPath).convert_alpha()
+
+    transitions.fadein(screen, OceanGraphic)
 
     ShipPath = "./assets/art/ship-PLACEHOLDER-1280horiz.png"
     Ship = pg.image.load(ShipPath).convert_alpha()

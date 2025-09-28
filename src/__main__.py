@@ -60,7 +60,20 @@ while running:
                 running = False
         if PlayButtonBox.check_click() == True:
             transitions.fadeout(screen)
-            repair_loop(screen,clock)
+            combat_loop(screen,clock, 1)
+            transitions.fadeout(screen)
+            repair_loop(screen, clock, 1)
+            transitions.fadeout(screen)
+            combat_loop(screen,clock, 2)
+            transitions.fadeout(screen)
+            repair_loop(screen, clock, 2)
+            transitions.fadeout(screen)
+            combat_loop(screen,clock, 3)
+            transitions.fadeout(screen)
+            repair_loop(screen, clock, 3)
+            transitions.fadeout(screen)
+            combat_loop(screen,clock, 4)
+            transitions.fadeout(screen)
         elif SettingsButtonBox.check_click() == True:
             joke = True
             #Debug
