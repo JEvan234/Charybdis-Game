@@ -133,8 +133,8 @@ def repair_loop(screen,clock, level):
             if ChestBox.check_click() == True:
                 screen.blit(textBackground, (0,0))
                 Boardrepairs = True
-                repair_message = dialogue.TextPopup("You Repair and exchange the planks of the ship", (650,350), 1000)
-                debate = dialogue.TextPopup("After all the repairs is it still the same ship?", (650,400), 1000)
+                repair_message = dialogue.TextPopup("You repair and exchange the planks of the ship", (650,350), 1000)
+                debate = dialogue.TextPopup("After all the repairs, is it still the same ship?", (650,400), 1000)
                 if Boardrepairs == True:
                     repair_message.draw(screen)
                     debate.draw(screen)
@@ -160,7 +160,7 @@ def repair_loop(screen,clock, level):
                 message1 = dialogue.TextPopup("After enduring your first encounter, you plead with the sea god.", (650,350), 1000)
                 message2 = dialogue.TextPopup("You beg to be released from the ship, explaining that the ", (650,400), 1000)
                 message3 = dialogue.TextPopup("planks are no longer original, and thus the ship is new.", (650,450), 1000)
-                message4 = dialogue.TextPopup("The Sea god does not listen, he argues that the ship still floats, ", (650,500), 1000)
+                message4 = dialogue.TextPopup("The Sea God does not listen; he argues that the ship still floats, ", (650,500), 1000)
                 message5 = dialogue.TextPopup("just as it had when you embarked on your journey.", (650,550), 1000)
                 if script == True:
                     message1.draw(screen)
@@ -176,9 +176,9 @@ def repair_loop(screen,clock, level):
                 screen.blit(textBackground, (0,0))
                 script = True
                 message1 = dialogue.TextPopup("You once again plea with the god, begging for release.", (650,350), 1000)
-                message2 = dialogue.TextPopup("You argue that the ship itsself has seen many new battles,", (650,400), 1000)
+                message2 = dialogue.TextPopup("You argue that the ship itself has seen many new battles,", (650,400), 1000)
                 message3 = dialogue.TextPopup("and thus is no longer the same ship.", (650,450), 1000)
-                message4 = dialogue.TextPopup("The sea god ignores the captain's crys, and insists", (650,500), 1000)
+                message4 = dialogue.TextPopup("The Sea God ignores the captain's crys, and insists", (650,500), 1000)
                 message5 = dialogue.TextPopup("that the ship is still the same.", (650,550), 1000)
                 if script == True:
                     message1.draw(screen)
@@ -196,8 +196,8 @@ def repair_loop(screen,clock, level):
                 message1 = dialogue.TextPopup("You beg for release one final time, arguing that", (650,350), 1000)
                 message2 = dialogue.TextPopup("You are no longer the same, the seas have changed you, and as the", (650,400), 1000)
                 message3 = dialogue.TextPopup("captain, this change extends to the ship", (650,450), 1000)
-                message4 = dialogue.TextPopup("The sea god reminds you that the ship still stands,", (650,500), 1000)
-                message5 = dialogue.TextPopup("and ignores any furthur pleas.", (650,550), 1000)
+                message4 = dialogue.TextPopup("The Sea God reminds you that the ship still stands,", (650,500), 1000)
+                message5 = dialogue.TextPopup("and ignores any further pleas.", (650,550), 1000)
                 if script == True:
                     message1.draw(screen)
                     message2.draw(screen)

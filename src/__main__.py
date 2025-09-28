@@ -72,9 +72,9 @@ while running:
             # Intro script goes here
             script = True
             message1 = dialogue.TextPopup("You play as a ship captain eternally bound to the Ship of Theseus as long.", (650,350), 1000)
-            message2 = dialogue.TextPopup("In greek mythology, there is a popular paradox about whether the ship,", (650,400), 1000)
+            message2 = dialogue.TextPopup("In Greek mythology, there is a popular paradox about whether the ship,", (650,400), 1000)
             message3 = dialogue.TextPopup("after full replacement, is still the same ship. Your curse only binds", (650,450), 1000)
-            message4 = dialogue.TextPopup("you to the current ship, if you can convince the sea god that it is a new ", (650,500), 1000)
+            message4 = dialogue.TextPopup("you to the current ship, if you can convince the Sea God that it is a new ", (650,500), 1000)
             message5 = dialogue.TextPopup("ship, and survive the trials of the sea, then you will be released.", (650,550), 1000)
             if script == True:
                 message1.draw(screen)
