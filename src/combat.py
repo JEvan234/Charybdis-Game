@@ -14,7 +14,7 @@ def combat_loop(screen,clock):
 
     ARROW_SCALE = 1.0
     ARROW_SPEED = 10
-    ARROW_LIFETIME = 750 #this is in milliseconds!!!
+    ARROW_LIFETIME = 1750 #this is in milliseconds!!!
 
     PLAYER_SPEED = 8
 
