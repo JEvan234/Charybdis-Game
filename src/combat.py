@@ -205,7 +205,7 @@ def combat_loop(screen,clock,level):
                     running = False
 
         screen.blit(OceanGraphic, (0,0))
-        screen.blit(Ship, (0,100))
+        screen.blit(Ship, (0,730))
         #screen.blit(player.image, player.rect)
 
         
@@ -216,18 +216,18 @@ def combat_loop(screen,clock,level):
 
         if level == 1:
             screen.blit(ProgressGraphic1, (0,0))
-            screen.blit(Ship, (0,730))
+            screen.blit(Ship, (0,100))
             dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
             Enemy1 = Enemy((300,300))
         elif level == 2:
             screen.blit(ProgressGraphic2, (0,0))
-            screen.blit(Ship, (0,730))
+            screen.blit(Ship, (0,100))
             dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
             Enemy1 = Enemy((300,300))
             Enemy2 = Enemy((600,300))
         elif level == 3:
             screen.blit(ProgressGraphic3, (0,0))
-            screen.blit(Ship, (0,730))
+            screen.blit(Ship, (0,100))
             dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
             Enemy1 = Enemy((300,300))
             Enemy2 = Enemy((600,300))
@@ -257,6 +257,6 @@ def combat_loop(screen,clock,level):
 if __name__ == "__main__":
     screen = pg.display.set_mode((1280, 960))
     clock = pg.time.Clock()
-    level = 3
+    level = 4
     mixer.init()
     combat_loop(screen, clock, level)
