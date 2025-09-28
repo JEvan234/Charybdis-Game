@@ -9,8 +9,8 @@ import math
 #player_pos.y = 800
 def combat_loop(screen,clock):
     mixer.music.pause()
-    playerStartX = 300
-    playerStartY = 300
+    playerStartX = 610
+    playerStartY = 860
 
     ARROW_SCALE = 1.0
     ARROW_SPEED = 10
@@ -69,11 +69,12 @@ def combat_loop(screen,clock):
         
 
         def user_input(self):
+            
             self.velocity_x = 0
             self.velocity_y = 0
 
             keys = pg.key.get_pressed()
-
+            '''
             if keys[pg.K_w]:
                 self.velocity_y = -self.speed
             if keys[pg.K_a]:
@@ -86,7 +87,7 @@ def combat_loop(screen,clock):
             if self.velocity_x != 0 and self.velocity_y != 0:
                 self.velocity_x /= math.sqrt(2)
                 self.velocity_y /= math.sqrt(2)
-
+            '''
             if pg.mouse.get_pressed() == (1, 0, 0) or keys[pg.K_SPACE]:
                 self.shoot = True
                 self.is_shooting()
