@@ -4,6 +4,9 @@ from pygame import mixer
 from sys import exit
 import math
 import transitions
+import UI
+from time import sleep
+import dialogue
 
 # Define Repair loop for importing into main
 def repair_loop(screen,clock, level):
@@ -56,7 +59,7 @@ def repair_loop(screen,clock, level):
 
             keys = pg.key.get_pressed()
 
-            if keys[pg.K_w]:
+            '''if keys[pg.K_w]:
                 self.velocity_y = -self.speed
             if keys[pg.K_a]:
                 self.velocity_x = -self.speed
@@ -64,7 +67,7 @@ def repair_loop(screen,clock, level):
                 self.velocity_y = self.speed
             if keys[pg.K_d]:
                 self.velocity_x = self.speed
-
+'''
             if self.velocity_x != 0 and self.velocity_y != 0:
                 self.velocity_x /= math.sqrt(2)
                 self.velocity_y /= math.sqrt(2)
@@ -82,14 +85,40 @@ def repair_loop(screen,clock, level):
 
     player = Player()
 
+    #Load progress graphics
+    ProgressPath1 = "./assets/art/progressbar-1PROGRESS-640x60.png"
+    ProgressPath2 = "./assets/art/progressbar-2PROGRESS-640x60.png"
+    ProgressPath3 = "./assets/art/progressbar-3PROGRESS-640x60.png"
+    ProgressPath4 = "./assets/art/progressbar-4PROGRESS-640x60.png"
+
+    ProgressGraphic1 = pg.image.load(ProgressPath1).convert_alpha()
+    ProgressGraphic2 = pg.image.load(ProgressPath2).convert_alpha()
+    ProgressGraphic3 = pg.image.load(ProgressPath3).convert_alpha()
+    ProgressGraphic4 = pg.image.load(ProgressPath4).convert_alpha()
+
+    # Load popup graphics
+    textpopup_path = "assets/art/dialogue-BG-1280x960.png"
+    textBackground = pg.image.load(textpopup_path).convert_alpha()
+
 
     # Load Player Assets
     PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"
     PlayerModel = pg.image.load(PlayerPath).convert_alpha()
 
+    # Add ship elements:
+    Chest_path = "./assets/art/chest2.png"
+    Chest = pg.image.load(Chest_path).convert_alpha()
+    mat_path = "./assets/art/player-mat-80x60.png"
+    mat = pg.image.load(mat_path).convert_alpha()
+    wheel_path = "./assets/art/ships-wheel-80x60.png"
+    wheel = pg.image.load(wheel_path).convert_alpha()
+    
+    Boardrepairs = False
     # Main repair loop
     running = True
     while running:
+        ChestBox = UI.Button(550,350, 64, 64, True)
+        Carry_foward = UI.Button(725,425, 80, 60, True)
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
         for event in pg.event.get():
@@ -97,18 +126,35 @@ def repair_loop(screen,clock, level):
                 exit()
             elif event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
-                    running = False
+                    exit()
+            if Carry_foward.check_click() == True:
+                running = False
+            if ChestBox.check_click() == True:
+                screen.blit(textBackground, (0,0))
+                Boardrepairs = True
+                repair_message = dialogue.TextPopup("You Repair and exchange the planks of the ship", (650,350), 1000)
+                debate = dialogue.TextPopup("After all the repairs is it still the same ship?", (650,400), 1000)
+                if Boardrepairs == True:
+                    repair_message.draw(screen)
+                    debate.draw(screen)
+                pg.display.flip()
+                sleep(5)
+
 
         # fill the screen with a color to wipe away anything from last frame
         screen.blit(OceanGraphic, (0,0))
         screen.blit(Ship, (0,260))
+        screen.blit(wheel, (725, 425))
+        screen.blit(Chest, (550,350))
+        screen.blit(mat, (400, 425))
+        
 
         if level == 1:
-            pass
+            screen.blit(ProgressGraphic2, (0,0))
         elif level == 2:
-            pass
+            screen.blit(ProgressGraphic3, (0,0))
         elif level == 3:
-            pass
+            screen.blit(ProgressGraphic4, (0,0))
         elif level == 4:
             pass
 

@@ -93,7 +93,7 @@ def combat_loop(screen,clock,level):
             self.velocity_y = 0
 
             keys = pg.key.get_pressed()
-            
+            '''
             if keys[pg.K_w]:
                 self.velocity_y = -self.speed
             if keys[pg.K_a]:
@@ -102,7 +102,7 @@ def combat_loop(screen,clock,level):
                 self.velocity_y = self.speed
             if keys[pg.K_d]:
                 self.velocity_x = self.speed
-
+'''
             if self.velocity_x != 0 and self.velocity_y != 0:
                 self.velocity_x /= math.sqrt(2)
                 self.velocity_y /= math.sqrt(2)
