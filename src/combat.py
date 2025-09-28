@@ -51,6 +51,8 @@ def combat_loop(screen,clock,level):
 
     OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
     OceanGraphic = pg.image.load(OceanPath).convert_alpha()
+    MonsterPath = "assets/art/Charybdis.png"
+    Monster = pg.image.load(MonsterPath).convert_alpha()
 
     transitions.fadein(screen, OceanGraphic)
 
@@ -234,7 +236,6 @@ def combat_loop(screen,clock,level):
                     running = False
 
         screen.blit(OceanGraphic, (0,0))
-        screen.blit(Ship, (0,730))
         #screen.blit(player.image, player.rect)
 
         
@@ -265,14 +266,16 @@ def combat_loop(screen,clock,level):
                 running = False
             #dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
         elif level == 4:
-            if i < 900:
+            if i < 840:
                 i = i + 1
             else:
                 running = False
+            screen.blit(Monster, (0,0))
             screen.blit(ProgressGraphic4, (0,0))
             #dialogue.TextPopup("This is level 4", (650,600), 1000).draw(screen)
-
-
+        
+        # Render Ship
+        screen.blit(Ship, (0,730))
         all_sprites_group.draw(screen)
         all_sprites_group.update()
         
@@ -280,7 +283,6 @@ def combat_loop(screen,clock,level):
         #poorly made debug to see hitboxes of arrow sprites, need to rework (or redesign stuff)
         #for sprite in all_sprites_group:
            # pg.draw.rect(screen, "blue", sprite.rect, 2)
-
 
         pg.display.flip()
         clock.tick(60)

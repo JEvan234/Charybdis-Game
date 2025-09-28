@@ -105,7 +105,7 @@ while running:
             message1 = dialogue.TextPopup("After all the trials of the sea, you were unable to ", (650,350), 1000)
             message2 = dialogue.TextPopup("complete your journey. The monster Charybdis has swallowed the", (650,400), 1000)
             message3 = dialogue.TextPopup("ship whole, leaving nothing to remain. However, this has also freed", (650,450), 1000)
-            message4 = dialogue.TextPopup("you of the curse, as the only way to sail again is with a new vessel.", (650,500), 1000)
+            message4 = dialogue.TextPopup(" ", (650,500), 1000)
             if script == True:
                 message1.draw(screen)
                 message2.draw(screen)
