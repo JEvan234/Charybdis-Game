@@ -102,6 +102,17 @@ def repair_loop(screen,clock, level):
         screen.blit(OceanGraphic, (0,0))
         screen.blit(Ship, (0,260))
 
+        if level == 1:
+            pass
+        elif level == 2:
+            pass
+        elif level == 3:
+            pass
+        elif level == 4:
+            pass
+
+
+
         screen.blit(player.image, player.rect)
         player.update()
         # flip() the display to put your work on screen
