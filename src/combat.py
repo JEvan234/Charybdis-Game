@@ -30,6 +30,8 @@ def combat_loop(screen,clock):
     # Load assets
     OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
     OceanGraphic = pg.image.load(OceanPath).convert_alpha()
+    ShipPath = "./assets/art/ship-PLACEHOLDER-1280horiz.png"
+    Ship = pg.image.load(ShipPath).convert_alpha()
 
     PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"
     PlayerModel = pg.image.load(PlayerPath).convert_alpha()
@@ -167,6 +169,7 @@ def combat_loop(screen,clock):
                     running = False
 
         screen.blit(OceanGraphic, (0,0))
+        screen.blit(Ship, (0,730))
         #screen.blit(player.image, player.rect)
 
         all_sprites_group.draw(screen)
