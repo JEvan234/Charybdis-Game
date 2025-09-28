@@ -171,6 +171,7 @@ def combat_loop(screen,clock):
 
         screen.blit(OceanGraphic, (0,0))
         screen.blit(Ship, (0,730))
+        screen.blit(Ship, (0,100))
         #screen.blit(player.image, player.rect)
 
         all_sprites_group.draw(screen)
