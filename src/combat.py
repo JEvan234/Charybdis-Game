@@ -10,7 +10,16 @@ import transitions
 #player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 #player_pos.y = 800
 def combat_loop(screen,clock,level):
+    # music
     mixer.music.pause()
+    if level == 4:
+        mixer.music.load("./assets/music/BossIntro.wav")
+        mixer.music.play(loops=1)
+    else: 
+        mixer.music.load("./assets/music/BossMusic.mp3")
+        mixer.music.play(loops=-1)
+    
+    # Player start
     playerStartX = 610
     playerStartY = 860
 
@@ -209,14 +218,6 @@ def combat_loop(screen,clock,level):
         # Check for collisions between bullets and enemies
         collisions = pg.sprite.groupcollide(bullet_group, enemy_group, True, True)
 
-    # Music Handling:
-    mixer.music.pause()
-    if level == 4:
-        mixer.music.load("./assets/music/BossIntro.wav")
-        mixer.music.play(loops=1)
-    else: 
-        mixer.music.load("./assets/music/BossMusic.mp3")
-        mixer.music.play(loops=-1)
 
     i = 0 #timer start for if loop
     # Main Combat Loop

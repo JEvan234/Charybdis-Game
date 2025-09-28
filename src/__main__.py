@@ -9,6 +9,7 @@ from repairs import repair_loop
 from combat import combat_loop
 import dialogue
 import transitions
+from time import sleep
 
 # Define Screen size
 pg.init()
@@ -67,6 +68,23 @@ while running:
                 running = False
         if PlayButtonBox.check_click() == True:
             transitions.fadeout(screen)
+            screen.blit(textBackground)
+            # Intro script goes here
+            script = True
+            message1 = dialogue.TextPopup("You play as a ship captain eternally bound to the Ship of Theseus as long.", (650,350), 1000)
+            message2 = dialogue.TextPopup("In greek mythology, there is a popular paradox about whether the ship,", (650,400), 1000)
+            message3 = dialogue.TextPopup("after full replacement, is still the same ship. Your curse only binds", (650,450), 1000)
+            message4 = dialogue.TextPopup("you to the current ship, if you can convince the sea god that it is a new ", (650,500), 1000)
+            message5 = dialogue.TextPopup("ship, and survive the trials of the sea, then you will be released.", (650,550), 1000)
+            if script == True:
+                message1.draw(screen)
+                message2.draw(screen)
+                message3.draw(screen)
+                message4.draw(screen)
+                message5.draw(screen)
+            pg.display.flip()
+            sleep(15)
+            script = False
             combat_loop(screen,clock, 1)
             transitions.fadeout(screen)
             repair_loop(screen,clock,1)
@@ -81,6 +99,37 @@ while running:
             transitions.fadeout(screen)
             combat_loop(screen,clock, 4)
             transitions.fadeout(screen)
+            screen.blit(textBackground)
+            # Intro script goes here
+            script = True
+            message1 = dialogue.TextPopup("After all the trials of the sea, you were unable to ", (650,350), 1000)
+            message2 = dialogue.TextPopup("complete your journey. The monster Charybdis has swallowed the", (650,400), 1000)
+            message3 = dialogue.TextPopup("ship whole, leaving nothing to remain. However, this has also freed", (650,450), 1000)
+            message4 = dialogue.TextPopup("you of the curse, as the only way to sail again is with a new vessel.", (650,500), 1000)
+            if script == True:
+                message1.draw(screen)
+                message2.draw(screen)
+                message3.draw(screen)
+                message4.draw(screen)
+                message5.draw(screen)
+            pg.display.flip()
+            sleep(15)
+            screen.fill("black")
+            screen.blit(textBackground)
+            # Credits
+            message1 = dialogue.TextPopup("Programming: Mert Acar, Jacob Evans, Cliff Russell", (650,350), 1000)
+            message2 = dialogue.TextPopup("Script: Raam Patel", (650,400), 1000)
+            message3 = dialogue.TextPopup("Art: Stephen Colletta, Raam Patel", (650,450), 1000)
+            message4 = dialogue.TextPopup("Music: Jeremy Hopkins", (650,500), 1000)
+            message5 = dialogue.TextPopup("Special Thanks to LCKSU", (650,550), 1000)
+            if script == True:
+                message1.draw(screen)
+                message2.draw(screen)
+                message3.draw(screen)
+                message4.draw(screen)
+                message5.draw(screen)
+            pg.display.flip()
+            sleep(15)
         elif SettingsButtonBox.check_click() == True:
             joke = True
             #Debug

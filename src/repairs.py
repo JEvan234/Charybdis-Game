@@ -91,6 +91,7 @@ def repair_loop(screen,clock, level):
     ProgressPath3 = "./assets/art/progressbar-3PROGRESS-640x60.png"
     ProgressPath4 = "./assets/art/progressbar-4PROGRESS-640x60.png"
 
+    ProgressGraphic1 = pg.image.load(ProgressPath1).convert_alpha()
     ProgressGraphic2 = pg.image.load(ProgressPath2).convert_alpha()
     ProgressGraphic3 = pg.image.load(ProgressPath3).convert_alpha()
     ProgressGraphic4 = pg.image.load(ProgressPath4).convert_alpha()
@@ -160,7 +161,7 @@ def repair_loop(screen,clock, level):
                 message2 = dialogue.TextPopup("You beg to be released from the ship, explaining that the ", (650,400), 1000)
                 message3 = dialogue.TextPopup("planks are no longer original, and thus the ship is new.", (650,450), 1000)
                 message4 = dialogue.TextPopup("The Sea god does not listen, he argues that the ship still floats, ", (650,500), 1000)
-                message5 = dialogue.TextPopup("just as it had when you embarked on yor journey.", (650,550), 1000)
+                message5 = dialogue.TextPopup("just as it had when you embarked on your journey.", (650,550), 1000)
                 if script == True:
                     message1.draw(screen)
                     message2.draw(screen)
