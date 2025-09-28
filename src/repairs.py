@@ -119,6 +119,7 @@ def repair_loop(screen,clock, level):
     while running:
         ChestBox = UI.Button(550,350, 64, 64, True)
         Carry_foward = UI.Button(725,425, 80, 60, True)
+        matUI = UI.Button(400,425, 80, 60, True)
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
         for event in pg.event.get():
@@ -151,6 +152,16 @@ def repair_loop(screen,clock, level):
 
         if level == 1:
             screen.blit(ProgressGraphic2, (0,0))
+            if matUI.check_click() == True:
+                screen.blit(textBackground, (0,0))
+                Boardrepairs = True
+                repair_message = dialogue.TextPopup("You Repair and exchange the planks of the ship", (650,350), 1000)
+                debate = dialogue.TextPopup("After all the repairs is it still the same ship?", (650,400), 1000)
+                if Boardrepairs == True:
+                    repair_message.draw(screen)
+                    debate.draw(screen)
+                pg.display.flip()
+                sleep(5)
         elif level == 2:
             screen.blit(ProgressGraphic3, (0,0))
         elif level == 3:
