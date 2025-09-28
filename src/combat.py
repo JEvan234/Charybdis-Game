@@ -236,29 +236,32 @@ def combat_loop(screen,clock,level):
         if level == 1:
             screen.blit(ProgressGraphic1, (0,0))
             screen.blit(Ship, (0,100))
-            dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
+            handle_collisions()
+            if not enemy_group:
+                running = False
+            #dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
         elif level == 2:
             screen.blit(ProgressGraphic2, (0,0))
             screen.blit(Ship, (0,100))
-            dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
+            handle_collisions()
+            if not enemy_group:
+                running = False
+            #dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
         elif level == 3:
             screen.blit(ProgressGraphic3, (0,0))
             screen.blit(Ship, (0,100))
-            dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
+            handle_collisions()
+            if not enemy_group:
+                running = False
+            #dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
         elif level == 4:
             screen.blit(ProgressGraphic4, (0,0))
-            dialogue.TextPopup("This is level 4", (650,600), 1000).draw(screen)
+            #dialogue.TextPopup("This is level 4", (650,600), 1000).draw(screen)
 
 
         all_sprites_group.draw(screen)
         all_sprites_group.update()
         
-        # Call the collision handling function
-        handle_collisions()
-
-        # Check if all enemies are defeated to end the level
-        if not enemy_group:
-            running = False # End the loop if no enemies are left
 
         #poorly made debug to see hitboxes of arrow sprites, need to rework (or redesign stuff)
         #for sprite in all_sprites_group:
