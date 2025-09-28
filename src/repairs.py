@@ -3,13 +3,24 @@ import  pygame as pg
 from pygame import mixer
 from sys import exit
 import math
+import transitions
 
 # Define Repair loop for importing into main
 def repair_loop(screen,clock):
     mixer.music.pause()
+
+    # Load assets
+    OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
+    OceanGraphic = pg.image.load(OceanPath).convert_alpha()
+    #OceanGraphic = pg.transform.scale(OceanGraphic, (500,500))
+    ShipPath = "./assets/art/ship-PLACEHOLDER-1280horiz.png" # 420 tall
+    Ship = pg.image.load(ShipPath).convert_alpha()
+
+    transitions.fadein(screen, OceanGraphic)
+
     # Define Player Start positions
-    playerStartX = 300
-    playerStartY = 300
+    playerStartX = 600
+    playerStartY = 450
 
     # Player Model
     PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"
@@ -70,12 +81,6 @@ def repair_loop(screen,clock):
 
     player = Player()
 
-    # Load assets
-    OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
-    OceanGraphic = pg.image.load(OceanPath).convert_alpha()
-    #OceanGraphic = pg.transform.scale(OceanGraphic, (500,500))
-    ShipPath = "./assets/art/ship-PLACEHOLDER-1280horiz.png" # 420 tall
-    Ship = pg.image.load(ShipPath).convert_alpha()
 
     # Load Player Assets
     PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"

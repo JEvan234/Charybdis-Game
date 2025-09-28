@@ -59,6 +59,7 @@ while running:
             if event.key == pg.K_ESCAPE:
                 running = False
         if PlayButtonBox.check_click() == True:
+            transitions.fadeout(screen)
             repair_loop(screen,clock)
         elif SettingsButtonBox.check_click() == True:
             joke = True
