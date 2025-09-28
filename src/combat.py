@@ -170,6 +170,13 @@ def combat_loop(screen,clock,level):
     class Enemy(pg.sprite.Sprite): 
         def __init__(self, position):
             super().__init__(enemy_group, all_sprites_group)
+
+            self.image = EnemyModel
+            self.image = pg.transform.rotozoom(self.image, 0, 1)
+            
+            self.rect = self.image.get_rect()
+            self.rect.center = position
+
             self.alive = True
             self.position = pg.math.Vector2(position) 
 
@@ -209,9 +216,12 @@ def combat_loop(screen,clock,level):
         if level == 1:
             screen.blit(ProgressGraphic1, (0,0))
             dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
+            Enemy1 = Enemy((300,300))
         elif level == 2:
             screen.blit(ProgressGraphic2, (0,0))
             dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
+            Enemy1 = Enemy((300,300))
+            Enemy2 = Enemy((600,300))
         elif level == 3:
             screen.blit(ProgressGraphic3, (0,0))
             dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
@@ -236,6 +246,6 @@ def combat_loop(screen,clock,level):
 if __name__ == "__main__":
     screen = pg.display.set_mode((1280, 960))
     clock = pg.time.Clock()
-    level = 2
+    level = 3
     mixer.init()
     combat_loop(screen, clock, level)
