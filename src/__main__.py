@@ -1,5 +1,6 @@
 # Main script
 ## RIP the Dream
+# Gotta keep the streak going
 
 import  pygame as pg
 from pygame import mixer
