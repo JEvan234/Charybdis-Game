@@ -148,20 +148,28 @@ def repair_loop(screen,clock, level):
         screen.blit(wheel, (725, 425))
         screen.blit(Chest, (550,350))
         screen.blit(mat, (400, 425))
+        screen.blit(player.image, player.rect)
+        player.update()
         
 
         if level == 1:
             screen.blit(ProgressGraphic2, (0,0))
             if matUI.check_click() == True:
                 screen.blit(textBackground, (0,0))
-                Boardrepairs = True
-                repair_message = dialogue.TextPopup("You Repair and exchange the planks of the ship", (650,350), 1000)
-                debate = dialogue.TextPopup("After all the repairs is it still the same ship?", (650,400), 1000)
-                if Boardrepairs == True:
-                    repair_message.draw(screen)
-                    debate.draw(screen)
+                script = True
+                message1 = dialogue.TextPopup("After enduring your first encounter, you plead with the sea god.", (650,350), 1000)
+                message2 = dialogue.TextPopup("You beg to be released from the ship, explaining that the ", (650,400), 1000)
+                message3 = dialogue.TextPopup("planks are no longer original, and thus the ship is new.", (650,450), 1000)
+                message4 = dialogue.TextPopup("The Sea god does not listen, he argues that the ship still floats, ", (650,500), 1000)
+                message5 = dialogue.TextPopup("just as it had when you embarked on yor journey.", (650,550), 1000)
+                if script == True:
+                    message1.draw(screen)
+                    message2.draw(screen)
+                    message3.draw(screen)
+                    message4.draw(screen)
+                    message5.draw(screen)
                 pg.display.flip()
-                sleep(5)
+                sleep(7)
         elif level == 2:
             screen.blit(ProgressGraphic3, (0,0))
         elif level == 3:
@@ -170,9 +178,7 @@ def repair_loop(screen,clock, level):
             pass
 
 
-
-        screen.blit(player.image, player.rect)
-        player.update()
+        
         # flip() the display to put your work on screen
         pg.display.flip()
 
