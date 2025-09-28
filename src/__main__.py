@@ -99,7 +99,7 @@ while running:
             transitions.fadeout(screen)
             combat_loop(screen,clock, 4)
             transitions.fadeout(screen)
-            screen.blit(textBackground)
+            screen.blit(textBackground, (0,0))
             # Intro script goes here
             script = True
             message1 = dialogue.TextPopup("After all the trials of the sea, you were unable to ", (650,350), 1000)
@@ -114,7 +114,7 @@ while running:
             pg.display.flip()
             sleep(15)
             screen.fill("black")
-            screen.blit(textBackground)
+            screen.blit(textBackground, (0,0))
             # Credits
             message1 = dialogue.TextPopup("Programming: Mert Acar, Jacob Evans, Cliff Russell", (650,350), 1000)
             message2 = dialogue.TextPopup("Script: Raam Patel", (650,400), 1000)
