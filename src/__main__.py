@@ -5,6 +5,7 @@ import UI
 from repairs import repair_loop
 from combat import combat_loop
 import dialogue
+import transitions
 
 # Define Screen size
 pg.init()
@@ -48,7 +49,7 @@ while running:
     #define buttons logically:
     PlayButtonBox = UI.Button(480,420,320,120,True)
     SettingsButtonBox = UI.Button(480,620, 320, 120, True)
-    SettingsMeme = dialogue.TextPopup("If you change all the settings, is it still the same game", (650,600), 1000)
+    SettingsMeme = dialogue.TextPopup("If you change all the settings, is it still the same game?", (650,660), 1000)
 
     # Check Quit Condition
     for event in pg.event.get():
@@ -60,7 +61,6 @@ while running:
         if PlayButtonBox.check_click() == True:
             repair_loop(screen,clock)
         elif SettingsButtonBox.check_click() == True:
-            print("If you change all the settings, is it still the same game")
             joke = True
             #Debug
             #combat_loop(screen,clock)
@@ -76,7 +76,8 @@ while running:
 
     #Load Button assets
     screen.blit(PlayButton, (480,420)) #(480, 420)
-    screen.blit(SettingsButton, (480,620)) #480, 620)
+    if joke == False:
+        screen.blit(SettingsButton, (480,620)) #480, 620)
     
 
     pg.display.flip()
