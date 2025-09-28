@@ -4,10 +4,11 @@ from pygame import mixer
 from sys import exit
 import time
 import math
+import dialogue
 
 #player_pos = pg.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 #player_pos.y = 800
-def combat_loop(screen,clock):
+def combat_loop(screen,clock,level):
     mixer.music.pause()
     playerStartX = 610
     playerStartY = 860
@@ -150,10 +151,19 @@ def combat_loop(screen,clock):
         def update(self):
             self.arrow_movement()
 
+
+    class Enemy(pg.sprite.Sprite): 
+        def __init__(self, position):
+            super().__init__(enemy_group, all_sprites_group)
+            self.alive = True
+            self.position = pg.math.Vector2(position) 
+
+    
     player = Player()
 
     all_sprites_group = pg.sprite.Group()
     bullet_group = pg.sprite.Group()
+    enemy_group = pg.sprite.Group()
 
     all_sprites_group.add(player)
 
@@ -181,6 +191,12 @@ def combat_loop(screen,clock):
         pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
         pg.draw.rect(screen, "yellow", player.rect, width=2)
 
+        if level == 1:
+            dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
+        elif level == 2:
+            dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
+        
+
         #poorly made debug to see hitboxes of arrow sprites, need to rework (or redesign stuff)
         for sprite in all_sprites_group:
             pg.draw.rect(screen, "blue", sprite.rect, 2)
@@ -197,5 +213,6 @@ def combat_loop(screen,clock):
 if __name__ == "__main__":
     screen = pg.display.set_mode((1280, 960))
     clock = pg.time.Clock()
+    level = 1
     mixer.init()
-    combat_loop(screen, clock)
+    combat_loop(screen, clock, level)
