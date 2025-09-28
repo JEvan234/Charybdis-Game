@@ -130,7 +130,8 @@ def combat_loop(screen,clock):
             self.arrow_lifetime = ARROW_LIFETIME
             self.spawn_time = pg.time.get_ticks() # gets the specific time that the bullet was created
 
-            self.image = pg.transform.rotate(self.base_arrow_image, -(self.angle + 90))
+            self.image = pg.transform.rotate(self.base_arrow_image, -(self.angle + 180)) #transformation to properly orient arrows
+            
 
         def arrow_movement(self):  
             self.x += self.x_vel
@@ -171,8 +172,12 @@ def combat_loop(screen,clock):
         all_sprites_group.update()
 
         #debug imagery
-        #pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
-        #pg.draw.rect(screen, "yellow", player.rect, width=2)
+        pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
+        pg.draw.rect(screen, "yellow", player.rect, width=2)
+
+        #poorly made debug to see hitboxes of arrow sprites, need to rework (or redesign stuff)
+        for sprite in all_sprites_group:
+            pg.draw.rect(screen, "blue", sprite.rect, 2)
 
 
         pg.display.flip()
