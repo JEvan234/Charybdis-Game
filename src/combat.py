@@ -52,6 +52,7 @@ def combat_loop(screen,clock):
 
             self.shoot = False
             self.shoot_cooldown = 0
+            self.angle = 0
 
             self.gun_barrel_offset = pg.math.Vector2(GUN_OFFSET_X, GUN_OFFSET_Y)
 
