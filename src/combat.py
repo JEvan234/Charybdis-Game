@@ -255,8 +255,7 @@ def combat_loop(screen,clock,level):
                 running = False
             #dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
         elif level == 4:
-            if i < range(900):
-                counter = counter + 1
+            if i < 900:
                 i = i + 1
             else:
                 running = False
