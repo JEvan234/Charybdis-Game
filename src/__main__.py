@@ -36,6 +36,10 @@ PyGameLogoPath = "./assets/art/pygame-ALT-320vert.png"
 PygameLogo = pg.image.load(PyGameLogoPath).convert_alpha()
 PygameLogo = pg.transform.scale(PygameLogo, (150,150))
 
+# Load popup graphics
+textpopup_path = "assets/art/dialogue-BG-1280x960.png"
+textBackground = pg.image.load(textpopup_path).convert_alpha()
+
 # Button assets
 PlayPath = "./assets/art/playbutton-PLACEHOLDER-320x120.png"
 PlayButton = pg.image.load(PlayPath).convert_alpha()

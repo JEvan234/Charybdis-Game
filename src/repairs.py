@@ -91,7 +91,6 @@ def repair_loop(screen,clock, level):
     ProgressPath3 = "./assets/art/progressbar-3PROGRESS-640x60.png"
     ProgressPath4 = "./assets/art/progressbar-4PROGRESS-640x60.png"
 
-    ProgressGraphic1 = pg.image.load(ProgressPath1).convert_alpha()
     ProgressGraphic2 = pg.image.load(ProgressPath2).convert_alpha()
     ProgressGraphic3 = pg.image.load(ProgressPath3).convert_alpha()
     ProgressGraphic4 = pg.image.load(ProgressPath4).convert_alpha()

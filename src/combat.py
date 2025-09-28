@@ -209,6 +209,15 @@ def combat_loop(screen,clock,level):
         # Check for collisions between bullets and enemies
         collisions = pg.sprite.groupcollide(bullet_group, enemy_group, True, True)
 
+    # Music Handling:
+    mixer.music.pause()
+    if level == 4:
+        mixer.music.load("./assets/music/BossIntro.wav")
+        mixer.music.play(loops=1)
+    else: 
+        mixer.music.load("./assets/music/BossMusic.mp3")
+        mixer.music.play(loops=-1)
+
     i = 0 #timer start for if loop
     # Main Combat Loop
     running = True
