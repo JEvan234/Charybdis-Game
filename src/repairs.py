@@ -8,7 +8,8 @@ import transitions
 # Define Repair loop for importing into main
 def repair_loop(screen,clock, level):
     mixer.music.pause()
-
+    mixer.music.load("./assets/music/ShopLofi.wav")
+    mixer.music.play(loops=-1)
     # Load assets
     OceanPath = "./assets/art/ocean-bg-PLACEHOLDER-1280x960.png"
     OceanGraphic = pg.image.load(OceanPath).convert_alpha()
@@ -23,7 +24,7 @@ def repair_loop(screen,clock, level):
     playerStartY = 450
 
     # Player Model
-    PlayerPath = "./assets/art/player-PLACEHOLDER-80x60.png"
+    PlayerPath = "./assets/art/player-STANDING-110x60.png"
     PlayerModel = pg.image.load(PlayerPath).convert_alpha()
 
     # General player logic
@@ -125,4 +126,4 @@ def repair_loop(screen,clock, level):
 
 if __name__ == "__main__":
     mixer.init()
-    repair_loop(screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())
+    repair_loop(level=1,screen = pg.display.set_mode((1280, 960)),clock = pg.time.Clock())

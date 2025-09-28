@@ -1,4 +1,6 @@
 # Main script
+## RIP the Dream
+
 import  pygame as pg
 from pygame import mixer
 import UI
@@ -62,18 +64,17 @@ while running:
             transitions.fadeout(screen)
             combat_loop(screen,clock, 1)
             transitions.fadeout(screen)
-            repair_loop(screen, clock, 1)
-            transitions.fadeout(screen)
+            #transitions.fadeout(screen)
             combat_loop(screen,clock, 2)
             transitions.fadeout(screen)
-            repair_loop(screen, clock, 2)
-            transitions.fadeout(screen)
+            #repair_loop(screen, clock, 2)
+            #transitions.fadeout(screen)
             combat_loop(screen,clock, 3)
             transitions.fadeout(screen)
-            repair_loop(screen, clock, 3)
-            transitions.fadeout(screen)
+            #repair_loop(screen, clock, 3)
+            #transitions.fadeout(screen)
             combat_loop(screen,clock, 4)
-            transitions.fadeout(screen)
+            #transitions.fadeout(screen)
         elif SettingsButtonBox.check_click() == True:
             joke = True
             #Debug
