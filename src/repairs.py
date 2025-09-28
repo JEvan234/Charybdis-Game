@@ -6,7 +6,7 @@ import math
 import transitions
 
 # Define Repair loop for importing into main
-def repair_loop(screen,clock):
+def repair_loop(screen,clock, level):
     mixer.music.pause()
 
     # Load assets
