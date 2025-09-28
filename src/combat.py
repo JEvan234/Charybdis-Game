@@ -205,12 +205,10 @@ def combat_loop(screen,clock,level):
                     running = False
 
         screen.blit(OceanGraphic, (0,0))
-        screen.blit(Ship, (0,730))
         screen.blit(Ship, (0,100))
         #screen.blit(player.image, player.rect)
 
-        all_sprites_group.draw(screen)
-        all_sprites_group.update()
+        
 
         #debug imagery
         #pg.draw.rect(screen, "red", player.hitbox_rect, width=2)
@@ -218,19 +216,29 @@ def combat_loop(screen,clock,level):
 
         if level == 1:
             screen.blit(ProgressGraphic1, (0,0))
+            screen.blit(Ship, (0,730))
             dialogue.TextPopup("This is level 1", (650,600), 1000).draw(screen)
             Enemy1 = Enemy((300,300))
         elif level == 2:
             screen.blit(ProgressGraphic2, (0,0))
+            screen.blit(Ship, (0,730))
             dialogue.TextPopup("This is level 2", (650,600), 1000).draw(screen)
             Enemy1 = Enemy((300,300))
             Enemy2 = Enemy((600,300))
         elif level == 3:
             screen.blit(ProgressGraphic3, (0,0))
+            screen.blit(Ship, (0,730))
             dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
+            Enemy1 = Enemy((300,300))
+            Enemy2 = Enemy((600,300))
+            Enemy3 = Enemy((900,300))
         elif level == 4:
             screen.blit(ProgressGraphic4, (0,0))
             dialogue.TextPopup("This is level 4", (650,600), 1000).draw(screen)
+
+
+        all_sprites_group.draw(screen)
+        all_sprites_group.update()
         
 
         #poorly made debug to see hitboxes of arrow sprites, need to rework (or redesign stuff)
