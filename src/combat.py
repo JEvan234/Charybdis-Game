@@ -209,7 +209,7 @@ def combat_loop(screen,clock,level):
         # Check for collisions between bullets and enemies
         collisions = pg.sprite.groupcollide(bullet_group, enemy_group, True, True)
 
-
+    i = 0 #timer start for if loop
     # Main Combat Loop
     running = True
     spawn_enemies(level) # Spawn enemies at the start of the loop
@@ -255,6 +255,11 @@ def combat_loop(screen,clock,level):
                 running = False
             #dialogue.TextPopup("This is level 3", (650,600), 1000).draw(screen)
         elif level == 4:
+            if i < range(900):
+                counter = counter + 1
+                i = i + 1
+            else:
+                running = False
             screen.blit(ProgressGraphic4, (0,0))
             #dialogue.TextPopup("This is level 4", (650,600), 1000).draw(screen)
 
